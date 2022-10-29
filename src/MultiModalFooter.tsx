@@ -21,7 +21,12 @@ export function MultiModalFooter({ nextButtonProps, previousButtonProps, ...prop
           Previous
         </Button>
       )}
-      <Button w={100} onClick={nextOrCloseHandleClick} {...nextButtonProps}>
+      <Button
+        w={100}
+        onClick={nextOrCloseHandleClick}
+        {...(isFirstSection && { ml: 'auto', alignSelf: 'flex-end' })}
+        {...nextButtonProps}
+      >
         {nextOrCloseTitle}
       </Button>
     </ModalFooter>

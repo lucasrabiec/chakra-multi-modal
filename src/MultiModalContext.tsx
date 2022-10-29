@@ -21,10 +21,16 @@ interface MultiModalContextType {
 
 interface MultiModalProviderProps {
   sections: ReactElement[];
+  isOpen: boolean;
   onClose: () => void;
 }
 
-export function MultiModalProvider({ sections, children, onClose }: PropsWithChildren<MultiModalProviderProps>) {
+export function MultiModalProvider({
+  sections,
+  children,
+  onClose,
+  isOpen,
+}: PropsWithChildren<MultiModalProviderProps>) {
   const firstIndex = 0;
   const lastIndex = sections.length - 1;
   const [currentIndex, setCurrentIndex] = useState<number>(firstIndex);
@@ -36,15 +42,22 @@ export function MultiModalProvider({ sections, children, onClose }: PropsWithChi
     setCurrentSection(sections[currentIndex]);
     currentIndex === firstIndex ? setIsFirstSection(true) : setIsFirstSection(false);
     currentIndex === lastIndex ? setIsLastSection(true) : setIsLastSection(false);
-  }, [sections, currentIndex, lastIndex]);
+
+    // Reset to first Section after ensuring the modal is not visible.
+    // Making this change inside the 'close' function causes flickering when changing Sections.
+    const timer = setTimeout(() => {
+      if (!isOpen) {
+        setCurrentIndex(0);
+      }
+    }, 50);
+
+    return () => clearTimeout(timer);
+  }, [sections, currentIndex, lastIndex, isOpen]);
 
   const next = useCallback(() => setCurrentIndex((prevState) => Math.min(prevState + 1, lastIndex)), [lastIndex]);
   const previous = useCallback(() => setCurrentIndex((prevState) => Math.max(prevState - 1, firstIndex)), []);
   const reset = useCallback(() => setCurrentIndex(0), []);
-  const close = useCallback(() => {
-    onClose();
-    setCurrentIndex(0);
-  }, [onClose]);
+  const close = useCallback(() => onClose(), [onClose]);
 
   const memoizedValue = useMemo(
     () => ({
