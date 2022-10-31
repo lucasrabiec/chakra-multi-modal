@@ -35,8 +35,12 @@
     "example": "pnpm --filter @1mb/chakra-multi-modal-example start",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
+    "typecheck": "tsc --noEmit",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "format:check": "prettier --check src",
+    "format:write": "prettier --write src",
+    "lint": "eslint src --ext .ts,.tsx --config .eslintrc.js"
   },
   "peerDependencies": {
     "@chakra-ui/button": "^2.0.0",
