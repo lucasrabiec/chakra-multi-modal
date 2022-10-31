@@ -15,5 +15,5 @@ module.exports = {
       },
     ],
   ],
-  ignore: ['./**/*.stories.tsx'],
+  ignore: ['./**/*.stories.tsx', '**/*.spec.tsx'],
 };

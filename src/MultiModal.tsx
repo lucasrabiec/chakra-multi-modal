@@ -9,7 +9,11 @@ export interface MultiModalProps extends ModalProps {
 
 export function MultiModal({ sections, children, ...props }: MultiModalProps) {
   return (
-    <MultiModalProvider sections={sections} onClose={props.onClose} isOpen={props.isOpen}>
+    <MultiModalProvider
+      sections={sections}
+      onClose={props.onClose}
+      isOpen={props.isOpen}
+    >
       <MultiModalBase {...props}>{children}</MultiModalBase>
     </MultiModalProvider>
   );

@@ -34,14 +34,20 @@ export function MultiModalProvider({
   const firstIndex = 0;
   const lastIndex = sections.length - 1;
   const [currentIndex, setCurrentIndex] = useState<number>(firstIndex);
-  const [currentSection, setCurrentSection] = useState<ReactElement>(sections[firstIndex]);
+  const [currentSection, setCurrentSection] = useState<ReactElement>(
+    sections[firstIndex],
+  );
   const [isFirstSection, setIsFirstSection] = useState<boolean>(true);
   const [isLastSection, setIsLastSection] = useState<boolean>(false);
 
   useEffect(() => {
     setCurrentSection(sections[currentIndex]);
-    currentIndex === firstIndex ? setIsFirstSection(true) : setIsFirstSection(false);
-    currentIndex === lastIndex ? setIsLastSection(true) : setIsLastSection(false);
+    currentIndex === firstIndex
+      ? setIsFirstSection(true)
+      : setIsFirstSection(false);
+    currentIndex === lastIndex
+      ? setIsLastSection(true)
+      : setIsLastSection(false);
 
     // Reset to first Section after ensuring the modal is not visible.
     // Making this change inside the 'close' function causes flickering when changing Sections.
@@ -54,8 +60,14 @@ export function MultiModalProvider({
     return () => clearTimeout(timer);
   }, [sections, currentIndex, lastIndex, isOpen]);
 
-  const next = useCallback(() => setCurrentIndex((prevState) => Math.min(prevState + 1, lastIndex)), [lastIndex]);
-  const previous = useCallback(() => setCurrentIndex((prevState) => Math.max(prevState - 1, firstIndex)), []);
+  const next = useCallback(
+    () => setCurrentIndex((prevState) => Math.min(prevState + 1, lastIndex)),
+    [lastIndex],
+  );
+  const previous = useCallback(
+    () => setCurrentIndex((prevState) => Math.max(prevState - 1, firstIndex)),
+    [],
+  );
   const reset = useCallback(() => setCurrentIndex(0), []);
   const close = useCallback(() => onClose(), [onClose]);
 
@@ -69,17 +81,31 @@ export function MultiModalProvider({
       reset,
       close,
     }),
-    [currentSection, isFirstSection, isLastSection, next, previous, reset, close],
+    [
+      currentSection,
+      isFirstSection,
+      isLastSection,
+      next,
+      previous,
+      reset,
+      close,
+    ],
   );
 
-  return <MultiModalContext.Provider value={memoizedValue}>{children}</MultiModalContext.Provider>;
+  return (
+    <MultiModalContext.Provider value={memoizedValue}>
+      {children}
+    </MultiModalContext.Provider>
+  );
 }
 
-export const MultiModalContext = createContext<MultiModalContextType>({} as MultiModalContextType);
+export const MultiModalContext = createContext<MultiModalContextType>(
+  {} as MultiModalContextType,
+);
 
 export function useMultiModal() {
   const context = useContext(MultiModalContext);
-  if (context === undefined) {
+  if (!context || !Object.keys(context).length) {
     throw new Error('MultiModalContext must be within MultiModalProvider');
   }
 
