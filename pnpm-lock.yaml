@@ -46,7 +46,6 @@ importers:
       react: ^18.2.0
       react-dom: ^18.2.0
       rimraf: ^3.0.2
-      testing-library__react: link:@types/@types/testing-library__react
       ts-jest: ^29.0.3
       typescript: ^4.8.4
     dependencies:
@@ -93,7 +92,6 @@ importers:
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       rimraf: 3.0.2
-      testing-library__react: link:@types/@types/testing-library__react
       ts-jest: 29.0.3_fxe5mizohawh6cjruma5lyyrna
       typescript: 4.8.4
 
