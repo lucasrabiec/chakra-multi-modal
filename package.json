@@ -1,6 +1,6 @@
 {
   "name": "@1mb/chakra-multi-modal",
-  "version": "2.0.0",
+  "version": "1.0.0",
   "description": "A Chakra UI Multi Modal - one modal with multiple, switchable sections",
   "author": "Łukasz Rabiec <lukaszrabiec@gmail.com>",
   "license": "MIT",
@@ -32,7 +32,6 @@
     "build:cjs": "cross-env BABEL_ENV=cjs babel src --extensions .ts,.tsx -d dist/cjs --source-maps",
     "build:esm": "cross-env BABEL_ENV=esm babel src --extensions .ts,.tsx -d dist/esm --source-maps",
     "build:types": "tsc --emitDeclarationOnly --declaration --declarationDir dist/types -p ./tsconfig.build.json",
-    "example": "pnpm --filter @1mb/chakra-multi-modal-example start",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "typecheck": "tsc --noEmit",

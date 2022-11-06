@@ -1,6 +1,8 @@
-name: Quality
+name: Code Quality
 
 on:
+  push:
+    branches: ['main']
   pull_request:
     branches: ['main']
 
@@ -43,29 +45,3 @@ jobs:
 
       - name: Type
         run: pnpm typecheck
-
-  tests:
-    name: Tests
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout branch
-        uses: actions/checkout@v3
-
-      - name: Install
-        uses: ./.github/composite-actions/install
-
-      - name: Test
-        run: pnpm test
-
-  build:
-    name: Build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout branch
-        uses: actions/checkout@v3
-
-      - name: Install
-        uses: ./.github/composite-actions/install
-
-      - name: Build
-        run: pnpm build
