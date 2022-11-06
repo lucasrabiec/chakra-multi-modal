@@ -29,14 +29,14 @@ This component is a wrapper for a basic [Chakra's Modal](https://chakra-ui.com/d
 
 In order to use this package, you'll need to have `@chakra-ui/react@2` set up like in [their docs](https://chakra-ui.com/getting-started)
 
-Then install this package
+Then install this package:
 
 ```bash
-npm i @1mb/chakra-multi-modal
+npm i chakra-multi-modal
 # or
-yarn add @1mb/chakra-multi-modal
+yarn add chakra-multi-modal
 # or
-pnpm add @1mb/chakra-multi-modal
+pnpm add chakra-multi-modal
 ```
 
 Once installed, you can replace Modal with MultiModal and add your sections to it:

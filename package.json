@@ -5,7 +5,7 @@
   "author": "Łukasz Rabiec <lukaszrabiec@gmail.com>",
   "license": "MIT",
   "homepage": "https://github.com/lucasrabiec/chakra-multi-modal#readme",
-  "keywords": ["chakra-ui", "multimodal", "modal", "react"],
+  "keywords": ["chakra-ui", "multimodal", "modal", "react", "ui", "frontend"],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lucasrabiec/chakra-multi-modal.git"
