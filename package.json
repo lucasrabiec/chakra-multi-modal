@@ -1,5 +1,5 @@
 {
-  "name": "@1mb/chakra-multi-modal",
+  "name": "chakra-multi-modal",
   "version": "0.1.0",
   "description": "A Chakra UI Multi Modal - one modal with multiple, switchable sections",
   "author": "Łukasz Rabiec <lukaszrabiec@gmail.com>",
@@ -12,9 +12,6 @@
   },
   "bugs": {
     "url": "https://github.com/lucasrabiec/chakra-multi-modal/issues"
-  },
-  "publishConfig": {
-    "access": "public"
   },
   "exports": {
     ".": {
